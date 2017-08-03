@@ -68,6 +68,7 @@
 
             $("#textoIntervalo").text("entre "+inicio+" e "+fim);
             $("#resultado").text(random);
+            $("#resposta").show();
         }
 
         $(document).ready(function () {
@@ -163,7 +164,7 @@
                 <!-- Fim do formulario -->
 
             </div>
-            <div class="col-lg-12" id="resposta" style="padding-bottom: 10%">
+            <div class="col-lg-12" id="resposta" style="padding-bottom: 10%; display:none;">
                 <hr>
                 <p class="text-primary">Resultado do sorteio <span id="textoIntervalo"></span>:</p>
                 <p class="bg-info" id="resultado" style="font-size: 300%; text-align: center">...</p>
