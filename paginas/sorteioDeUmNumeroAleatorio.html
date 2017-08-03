@@ -38,38 +38,47 @@
     <![endif]-->
 
     <script type="text/javascript">
+        function sorteiaNumero() {
+            var inicio = +$("#inicio").val();
+            var fim = +$("#fim").val();
+
+            //Se o início e o fim forem vazios, vai sortear entre 0 e 10
+            if(fim=="" && inicio==""){
+                fim = 10;
+            }
+            //Se só o FIM for vazio, vai sortear do INÍCIO até o último número com a mesma quantidade de algarismos do INÍCIO
+            else if(fim==""){
+                var tamanhoInicio = $("#inicio").val().length;
+
+                fim = "1";
+                for(var i=0; i<tamanhoInicio; i++){
+                    fim += "0";
+                }
+                fim = +fim;
+            }
+
+            //Se o INÍCIO do intervalo for maior que o FIM, ele inverte
+            if(inicio > fim){
+                var aux = fim;
+                fim = inicio;
+                inicio = aux;
+            }
+
+            random = Math.floor(Math.random() * (fim + 1 - inicio)) + inicio;
+
+            $("#textoIntervalo").text("entre "+inicio+" e "+fim);
+            $("#resultado").text(random);
+        }
 
         $(document).ready(function () {
-            $("#sorteioNumeros").submit(function () {
-                var inicio = +$("#inicio").val();
-                var fim = +$("#fim").val();
+            $("#btnSubmit").click(function () {
+                sorteiaNumero();
+            });
 
-                //Se o início e o fim forem vazios, vai sortear entre 0 e 10
-                if(fim=="" && inicio==""){
-                    fim = 10;
+            $(".input-numero").keypress(function(e){
+                if(e.wich == 13 || e.keyCode == 13){
+                    sorteiaNumero();
                 }
-                //Se só o FIM for vazio, vai sortear do INÍCIO até o último número com a mesma quantidade de algarismos do INÍCIO
-                else if(fim==""){
-                    var tamanhoInicio = $("#inicio").val().length;
-
-                    fim = "1";
-                    for(var i=0; i<tamanhoInicio; i++){
-                        fim += "0";
-                    }
-                    fim = +fim;
-                }
-
-                //Se o INÍCIO do intervalo for maior que o FIM, ele inverte
-                if(inicio > fim){
-                    var aux = fim;
-                    fim = inicio;
-                    inicio = aux;
-                }
-
-                random = Math.floor(Math.random() * (fim + 1 - inicio)) + inicio;
-
-                $("#textoIntervalo").text("entre "+inicio+" e "+fim);
-                $("#resultado").text(random);
             });
         });
     </script>
@@ -139,20 +148,18 @@
             <div class="col-lg-12 text-center">
 
                 <!-- Formulário -->
-                <form name="sorteioNumeros" id="sorteioNumeros" action="">
                     <div class="form-group col-lg-4">
                         <label for="inicio">Inicio do Intervalo</label>
-                        <input type="number" min="0" class="form-control" id="inicio" placeholder="Digite aqui o inicio do intervalo de numeros">
+                        <input type="number" min="0" class="form-control input-numero" id="inicio" placeholder="Digite aqui o inicio do intervalo de numeros">
                     </div>
                     <div class="form-group col-lg-4">
                         <label for="fim">Final do intervalo</label>
-                        <input type="number" min="0" class="form-control" id="fim" placeholder="Digite aqui o final do intervalo de numeros">
+                        <input type="number" min="0" class="form-control input-numero" id="fim" placeholder="Digite aqui o final do intervalo de numeros">
                     </div>
-                    <div class="form-group col-lg-4">
+                <div class="form-group col-lg-4">
                         <br>
                         <button type="submit" id="btnSubmit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
                     </div>
-                </form>
                 <!-- Fim do formulario -->
 
             </div>
