@@ -202,7 +202,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Sortear grupos de numeros a partir de um intervalo</h2>
+                    <h2>Sortear grupos de letras a partir de um intervalo</h2>
                     <hr class="star-primary">
                 </div>
                 <div class="col-lg-12 text-center">
@@ -210,11 +210,11 @@
                      <!-- Formularios -->
                       <div class="form-group col-lg-4">
                         <label for="inicio">Inicio do Intervalo</label>
-                        <input type="number" class="form-control" id="inicio" placeholder="Digite o primeiro numero do intervalo">
+                        <input type="number" class="form-control" id="inicio" placeholder="Digite a primeira letra do intervalo">
                       </div>
                       <div class="form-group col-lg-4">
                         <label for="fim">Final do intervalo</label>
-                        <input type="number" class="form-control" id="fim" placeholder="Digite o último numero do intervalo">
+                        <input type="number" class="form-control" id="fim" placeholder="Digite a ultima letra do intervalo">
                       </div>
                       <div class="form-group col-lg-4">
                             <br>
@@ -225,18 +225,24 @@
                         <input type="number" class="form-control" id="fim" placeholder="Digite aqui a quantidade de grupos a ser gerado">
                       </div>
                       <div class="form-group col-lg-4">
-                        <label for="fim">Quantidades de membros por grupos</label>
+                        <label for="fim">Quantidades de letras por grupos</label>
                         <input type="number" class="form-control" id="fim" placeholder="Digite aqui a quantidade de membros por grupo">
                         <span style="opacity:0.65;
                                     -moz-opacity: 0.65;
-                                    filter: alpha(opacity=65); ">Lembrando que a quantidade do ultimo grupo será proporcional ao que sobrar. Ex: 2 grupos de 2 numeros, sendo que só existem 3 numeros no intervalo, o ultimo grupo será formado pelo resto.
+                                    filter: alpha(opacity=65); ">Lembrando que a quantidade do ultimo grupo será proporcional ao que sobrar. Ex: 2 grupos de 2 letras no intervalo, sendo que só existem 3 letras, o ultimo grupo será formado pelo resto.
                         </span>
                       </div>
                     <div class="form-group col-lg-4">
-                        <div class="radio">
+                        <div class="checkbox">
                             <label for="valorPadrao">
-                                <input type="radio" name="valorPadrao" id="valorPadrao" value="1" checked>
-                                Usar repetição de numeros
+                                <input type="checkbox" name="valorPadrao" id="valorPadrao" value="1" checked>
+                                Usar repetição de Letras.
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="valorPadrao">
+                                <input type="checkbox" name="valorPadrao" id="valorPadrao" value="1" checked>
+                                Usar Valor Padrão (Intervalo de A a Z).
                             </label>
                         </div>
                     </div>
@@ -252,7 +258,7 @@
                         <div class="col-lg-3 cta-contents">
                             <h1 class="cta-title">GRUPO <span id="numero">1</span></h1>
                             <div class="cta-desc">
-                                <p>Numero 1,2,3,4,5 (Ao fazer o código, pode apagar isso)</p>
+                                <p>Letras A,B,C,D (Ao fazer o código, pode apagar isso)</p>
                             </div>
                         </div>
                      </div>
