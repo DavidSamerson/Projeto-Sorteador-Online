@@ -22,7 +22,6 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
-
     <style type="text/css">
        .roxo p { color: #ba4c63; font-weight: 900;text-shadow: 2px 2px black;}
     </style>
@@ -97,36 +96,34 @@
                     <hr>
                 </div>
                 <div class="col-lg-12 text-center">
+
                 <!-- Formularios -->
-                    <form name="input" action="">
                       <div class="form-group col-lg-4">
-                        <label for="inicioIntervalo">Inicio do Intervalo</label>
-                        <input type="text" class="form-control" id="inicio" placeholder="Digite aqui o inicio do intervalo de letras">
+                        <label for="inicio">Inicio do Intervalo</label>
+                        <input type="text" class="form-control input-letra" id="inicio" placeholder="Digite aqui a primeira letra do intervalo">
                       </div>
                       <div class="form-group col-lg-4">
-                        <label for="fimIntervalo">Final do intervalo</label>
-                        <input type="text" class="form-control" id="fim" placeholder="Digite aqui o final do intervalo de letras">
+                        <label for="fim">Final do intervalo</label>
+                        <input type="text" class="form-control input-letra" id="fim" placeholder="Digite aqui a última letra do intervalo">
                       </div>
                       <div class="form-group col-lg-4">
                             <br>
-                         <button type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
+                         <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
                       </div>
-                      <div class="form-group col-lg-4">
-                          <div class="radio">
+                    <div class="form-group col-lg-4">
+                        <div class="radio">
                             <label for="valorPadrao">
-                              <input type="radio" name="valorPadrao" id="valorPadrao" value="1">
-                              Usar valor padrão (Intervalo de A a Z)
+                                <input type="radio" name="valorPadrao" id="valorPadrao" value="1" checked>
+                                Usar valor padrão (Intervalo de A a Z)
                             </label>
-                            </div>
-                          
-                          </div>
-                    </form> 
+                        </div>
+                    </div>
                     <!-- Fim do formulario -->                
                 </div>
-                <div class="col-lg-12" id="resposta" style="padding-bottom: 10%">
+                <div class="col-lg-12" id="resposta" style="padding-bottom: 10%; display: none;">
                     <hr>
-                    <p class="text-primary">Resultado do sorteio:</p>
-                    <p class="bg-info" style="font-size: 300%; text-align: center">...</p>
+                    <p class="text-primary">Resultado do sorteio <span id="textoIntervalo"></span>:</p>
+                    <p class="bg-info" id="resultado" style="font-size: 300%; text-align: center">...</p>
                 </div>
             </div>
         </div>
@@ -230,6 +227,83 @@
 
     <!-- Theme JavaScript -->
     <script src="../js/freelancer.min.js"></script>
+
+<script type="text/javascript">
+    function sorteiaLetra() {
+
+        //Converte as letras para código ASCII
+        var inicio = $("#inicio").val().charCodeAt();
+        var fim = $("#fim").val().charCodeAt();
+
+        //Se o INICIO estiver vazio, vai sortear a partir do A
+        if(inicio==""){
+            inicio = "65";
+        }
+        //Se o FIM estiver vazio, vai sortear até o Z
+        if(fim==""){
+            fim = "90";
+        }
+
+        //Se o INÍCIO do intervalo for maior que o FIM, ele inverte
+        if(inicio > fim){
+            var aux = fim;
+            fim = inicio;
+            inicio = aux;
+        }
+
+        random = Math.floor(Math.random() * (fim + 1 - inicio)) + inicio;
+
+        //Converte o código ASCII de volta para letras
+        inicio = String.fromCharCode(inicio);
+        fim = String.fromCharCode(fim);
+        random = String.fromCharCode(random);
+
+        $("#textoIntervalo").text("entre "+inicio+" e "+fim);
+        $("#resultado").text(random);
+        $("#resposta").show();
+    }
+
+    $(document).ready(function () {
+        $("#btnSubmit").click(function () {
+            sorteiaLetra();
+        });
+
+        $(".input-letra").keypress(function(e){
+            if(window.event) {
+                tecla = e.keyCode;
+            }
+            else if(e.which) {
+                tecla = e.which;
+            }
+            else {
+                return true;
+            }
+
+            //Não aceita números, espaços ou caracteres especiais
+            if(!(((tecla >= "65") && (tecla <= "90")) || ((tecla >= "97") && (tecla <= "122")) || ((tecla >= "0") && (tecla <= "31"))  )){
+                return false;
+            }
+            //Se a letra for maiúscula, ele substitui o conteúdo do input por ela
+            else if((tecla >= "65") && (tecla <= "90")){
+                $("#"+e.target.id).val(e.key);
+            }
+            //Se a letra for minúscula, ele converte pra maiúscula e substitui o conteúdo do input pela letra
+            else if((tecla >= "97") && (tecla <= "122")){
+                $("#"+e.target.id).val(e.key.toUpperCase());
+            }
+
+            //Se o FIM estiver vazio, ele coloca um Z lá
+            if($("#fim").val()==""){
+                $("#fim").val("Z");
+            }
+
+            return false;
+        });
+
+
+    });
+
+</script>
 
 </body>
 
