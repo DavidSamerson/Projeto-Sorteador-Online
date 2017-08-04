@@ -28,6 +28,113 @@
 
     <style type="text/css">
        .roxo p { color: #ba4c63; font-weight: 900;text-shadow: 2px 2px black;}
+       .bs-calltoaction{
+            position: relative;
+            width:auto;
+            padding: 15px 25px;
+            border: 1px solid black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+            .bs-calltoaction > .row{
+                display:table;
+                width: calc(100% + 30px);
+            }
+             
+                .bs-calltoaction > .row > [class^="col-"],
+                .bs-calltoaction > .row > [class*=" col-"]{
+                    float:none;
+                    display:table-cell;
+                    vertical-align:middle;
+                }
+
+                    .cta-contents{
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+
+                        .cta-title{
+                            margin: 0 auto 15px;
+                            padding: 0;
+                        }
+
+                        .cta-desc{
+                            padding: 0;
+                        }
+
+                        .cta-desc p:last-child{
+                            margin-bottom: 0;
+                        }
+
+                    .cta-button{
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+
+        @media (max-width: 991px){
+            .bs-calltoaction > .row{
+                display:block;
+                width: auto;
+            }
+
+                .bs-calltoaction > .row > [class^="col-"],
+                .bs-calltoaction > .row > [class*=" col-"]{
+                    float:none;
+                    display:block;
+                    vertical-align:middle;
+                    position: relative;
+                }
+
+                .cta-contents{
+                    text-align: center;
+                }
+        }
+
+
+
+        .bs-calltoaction.bs-calltoaction-default{
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .bs-calltoaction.bs-calltoaction-primary{
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+
+        .bs-calltoaction.bs-calltoaction-info{
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+
+        .bs-calltoaction.bs-calltoaction-success{
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+        .bs-calltoaction.bs-calltoaction-warning{
+            color: #fff;
+            background-color: #f0ad4e;
+            border-color: #eea236;
+        }
+
+        .bs-calltoaction.bs-calltoaction-danger{
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+
+        .bs-calltoaction.bs-calltoaction-primary .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-info .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-success .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-warning .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-danger .cta-button .btn{
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -99,10 +206,54 @@
                     <hr class="star-primary">
                 </div>
                 <div class="col-lg-12 text-center">
-                    
-
+                <hr>
+                     <!-- Formularios -->
+                      <div class="form-group col-lg-4">
+                        <label for="inicio">Inicio do Intervalo</label>
+                        <input type="text" class="form-control" id="inicio" placeholder="Digite o primeiro numero do intervalo">
+                      </div>
+                      <div class="form-group col-lg-4">
+                        <label for="fim">Final do intervalo</label>
+                        <input type="text" class="form-control" id="fim" placeholder="Digite o último numero do intervalo">
+                      </div>
+                      <div class="form-group col-lg-4">
+                            <br>
+                         <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
+                      </div>
+                      <div class="form-group col-lg-4">
+                        <label for="fim">Quantidades de Grupos</label>
+                        <input type="text" class="form-control" id="fim" placeholder="Digite aqui a quantidade de grupos a ser gerado">
+                      </div>
+                    <div class="form-group col-lg-4">
+                        <div class="radio">
+                            <label for="valorPadrao">
+                                <input type="radio" name="valorPadrao" id="valorPadrao" value="1" checked>
+                                Usar repetição de numeros
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Fim do formulario -->
+                    <hr>
+                </div>
+                <div class="col-lg-12 text-center">
+                
+                <!-- RESPOSTA DOS SORTEIOS -->
+                    <!-- JS acrescentará copias dessa div a cada interação de grupo.. -->
+                    <div class="bs-calltoaction bs-calltoaction-success">
+                    <div class="row">
+                        <div class="col-lg-3 cta-contents">
+                            <h1 class="cta-title">GRUPO <span id="numero">1</span></h1>
+                            <div class="cta-desc">
+                                <p>Numero 1 (Ao fazer o código, pode apagar isso)</p>
+                                <!-- JS acrescentará copias desse P a cada grupo de numeros -->
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <!-- JS acrescentará copias dessa div a cada interação de grupo.. (FINAL DA DIV) -->
 
                 </div>
+
             </div>
         </div>
     </section>
