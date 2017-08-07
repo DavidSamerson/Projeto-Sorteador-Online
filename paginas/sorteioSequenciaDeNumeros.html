@@ -95,33 +95,29 @@
                     <p class="help-block">Digite abaixo o inicio e o fim do intervalo de numeros a ser sorteado</p>
                     <hr>
                 </div>
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-8 text-center">
 
                 <!-- Formularios -->
-                      <div class="form-group col-lg-4">
+                      <div class="form-group col-lg-6">
                         <label for="inicio">Inicio do Intervalo</label>
                         <input type="text" class="form-control input-letra" id="inicio" placeholder="Digite aqui a primeira letra do intervalo">
                       </div>
-                      <div class="form-group col-lg-4">
+                      <div class="form-group col-lg-6">
                         <label for="fim">Final do intervalo</label>
                         <input type="text" class="form-control input-letra" id="fim" placeholder="Digite aqui a última letra do intervalo">
                       </div>
-                      <div class="form-group col-lg-4">
-                            <br>
-                         <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
-                      </div>
-                    <div class="form-group col-lg-4">
+                      <div class="form-group col-lg-6">
+                       <label for="quantidade"> Tamanho da sequencia </label>
+                        <input type="number" name="quantidade" id="quantidade" placeholder="tamanho da sequencia" class="form-control input-letra">
+                        </div>
+                    <div class="form-group col-lg-6">
                         <div class="checkbox">
                             <label for="valorPadrao" >
-                                <input type="checkbox" name="valorPadrao" id="valorPadrao" value="1" checked>
+                                <input type="checkbox" name="valorPadrao" id="valorPadrao" value="0">
                                 Utilizar repetição
                             </label>
                             <br>
                             <!-- OCULTAR ESSA DIV ABAIXO, FAZER COM QUE ELA APAREÇA SÓ QUANDO EU CLICAR NA REPETIÇÃO-->
-                            <div style="margin-top: 2%">
-                        Tamanho da sequencia
-                        <input type="number" name="quantidade" id="quantidade" placeholder="tamanho da sequencia" class="form-control input-letra">
-                        </div>
                         </div>
                         
                     </div>
@@ -129,6 +125,10 @@
                         
                     <!-- Fim do formulario -->                
                 </div>
+                 <div class="form-group col-lg-4">
+                            <br>
+                         <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
+                      </div>
                 <div class="col-lg-12" id="resposta" style=" display: none;">
                     <hr>
                     <p class="text-primary">Resultado do sorteio <span id="textoIntervalo"></span>:</p>
