@@ -95,7 +95,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Sorteio de Intervalos de Numeros</h2>
+                    <h2>Sorteio de Datas</h2>
                     <hr class="star-primary">
                 </div>
                 <div class="col-lg-12 text-center">
@@ -105,10 +105,9 @@
                 <hr>
                 <!-- INICIO DA CÒPIA -->
                 <div class="control-group bg-success" style="padding: 10px;">
-                    <label for="product_type" class="pull-left"><h5> Intervalo 1: </h5> </label>
+                    <label for="product_type" class="pull-left"><h5> DATA 1: </h5> </label>
                     <div class="entry input-group">  
-                    <div class="col-lg-6"><input type="number" class="form-control " id="inicio1" placeholder="Inicio"></div>  
-                    <div class="col-lg-6"><input type="number" class="form-control" id="fim1" placeholder="Fim"></div>
+                    <div class="col-lg-12"><input type="date" class="form-control " id="inicio1" placeholder="DD/MMMM/AAAA"></div> 
                         <span class="input-group-btn">
                             <button class="btn btn-link" type="button"><i class="fa fa-times text-danger fa-lg"></i></button>
                             <button class="btn btn-link" type="button"><i class="fa fa-plus text-success fa-lg"></i></button>
@@ -119,7 +118,7 @@
 
                 </div>
 
-                 <div class="col-lg-2">
+                <div class="col-lg-2">
                     <div class="control-group ">
                         <label for="product_type"><h6><small>Quantidade de Resultados</small></h6></label>
                         <input type="number" class="form-control " id="inicio1" placeholder="Quantidade de resultados"> 
@@ -136,11 +135,14 @@
                     <hr>
                      <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
                 </div>
-                <hr>
+                <br>
                 <div class=" bg-success col-lg-6 pull-right" style="margin-top: 5%;">
+                <br>
                     <h3>Resultado:</h3>
                     <br>
-                    <span><h4>1: Sequencia 1</h4></span>
+                    <span> <h5> 1 -  DATA ESCOLHIDA </h5> </span>
+                    <span> <h5> 2 -  DATA ESCOLHIDA </h5> </span>
+                    <span> <h5> ... </h5> </span>
                 </div>
                 </div>
             </div>
