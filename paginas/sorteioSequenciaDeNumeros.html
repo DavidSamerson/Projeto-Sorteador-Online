@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Sorteio de uma sequencia de numeros aleatórios</h2>
-                    <p class="help-block">Digite abaixo o inicio e o fim do intervalo de numeros a ser sorteado</p>
+                    <p class="help-block">Digite abaixo o inicio e o fim do intervalo de números a ser sorteado</p>
                     <hr>
                 </div>
                 <div class="col-lg-8 text-center">
@@ -100,24 +100,22 @@
                 <!-- Formularios -->
                       <div class="form-group col-lg-6">
                         <label for="inicio">Inicio do Intervalo</label>
-                        <input type="text" class="form-control input-letra" id="inicio" placeholder="Digite aqui a primeira letra do intervalo">
+                        <input type="number" min="0" class="form-control input-letra input-numero" id="inicio" placeholder="Digite aqui o primeiro número do intervalo">
                       </div>
                       <div class="form-group col-lg-6">
                         <label for="fim">Final do intervalo</label>
-                        <input type="text" class="form-control input-letra" id="fim" placeholder="Digite aqui a última letra do intervalo">
+                        <input type="number" min="0" class="form-control input-letra input-numero" id="fim" placeholder="Digite aqui o último número do intervalo">
                       </div>
                       <div class="form-group col-lg-6">
-                       <label for="quantidade"> Tamanho da sequencia </label>
-                        <input type="number" name="quantidade" id="quantidade" placeholder="tamanho da sequencia" class="form-control input-letra">
+                       <label for="quantidade"> Tamanho da sequência </label>
+                        <input type="number" name="quantidade" id="quantidade" min="1" placeholder="Tamanho da sequência" class="form-control input-letra input-numero">
                         </div>
                     <div class="form-group col-lg-6">
                         <div class="checkbox">
-                            <label for="valorPadrao" >
-                                <input type="checkbox" name="valorPadrao" id="valorPadrao" value="0">
-                                Utilizar repetição
+                            <label for="permitirRepeticao" >
+                                <input type="checkbox" name="permitirRepeticao" id="permitirRepeticao" checked="true">
+                                Permitir repetição
                             </label>
-                            <br>
-                            <!-- OCULTAR ESSA DIV ABAIXO, FAZER COM QUE ELA APAREÇA SÓ QUANDO EU CLICAR NA REPETIÇÃO-->
                         </div>
                         
                     </div>
@@ -236,6 +234,138 @@
 
     <!-- Theme JavaScript -->
     <script src="../js/freelancer.min.js"></script>
+
+    <script type="text/javascript">
+        function sorteioSequenciaDeNumeros(){
+            limitaQuantidade();
+
+            var inicio = +$("#inicio").val();
+            var fim = +$("#fim").val();
+            var quantidade = +$("#quantidade").val();
+            var permitirRepeticao = $("#permitirRepeticao").is(":checked");
+            var texto = "";
+
+            //Se o início e o fim forem vazios, vai sortear entre 0 e 10
+            if(fim=="" && inicio==""){
+                fim = 9;
+            }
+            //Se só o FIM for vazio, vai sortear do INÍCIO até o último número com a mesma quantidade de algarismos do INÍCIO
+            else if(fim==""){
+                var tamanhoInicio = $("#inicio").val().length;
+
+                fim = "1";
+                for(var i=0; i<tamanhoInicio; i++){
+                    fim += "0";
+                }
+                fim = +fim;
+            }
+
+            //Se o INÍCIO do intervalo for maior que o FIM, ele inverte
+            if(inicio > fim){
+                var aux = fim;
+                fim = inicio;
+                inicio = aux;
+            }
+
+            //Se QUANTIDADE não for informada, o número de elementos sorteados será do tamanho do espaço amostral especificado, desde que menor que 10
+            if(!quantidade || quantidade < 1){
+                quantidade = (fim - inicio) + 1;
+
+                if(quantidade > 10) {
+                    quantidade = "10";
+                }
+            }
+
+            if(permitirRepeticao){
+                for(var i=0; i<quantidade; i++){
+                    texto += sortear(inicio, fim);
+
+                    if(i<quantidade -1){
+                        texto +=", ";
+                    }
+                }
+            }
+            else{
+                var proxNumero;
+                var numeros = new Array();
+
+                for(var i=0; i<quantidade; i++){
+                    do{
+                        proxNumero = sortear(inicio, fim);
+                    }while(numeros.indexOf(proxNumero)!=-1);
+
+                    numeros[i] = proxNumero;
+                    texto += proxNumero;
+
+                    if(i<quantidade -1){
+                        texto +=", ";
+                    }
+                }
+            }
+
+            $("#textoIntervalo").text("entre "+inicio+" e "+fim);
+            $("#resultado").text(texto);
+            $("#resposta").show();
+        }
+
+        function sortear(inicio, fim) {
+            return Math.floor(Math.random() * (fim + 1 - inicio)) + inicio;
+        }
+
+        function limitaQuantidade(){
+            var inicio = +$("#inicio").val();
+            var fim = +$("#fim").val();
+
+            if($("#permitirRepeticao").is(":checked")){
+                $("#quantidade").attr("max", "");
+            }
+            else{
+                if(fim=="" && inicio==""){
+                    fim = 10;
+                }
+                else if(fim==""){
+                    var tamanhoInicio = $("#inicio").val().length;
+
+                    fim = "1";
+                    for(var i=0; i<tamanhoInicio; i++){
+                        fim += "0";
+                    }
+                    fim = +fim;
+                }
+
+                var limite = Math.abs(inicio-fim) + 1;
+
+                //Se a quantidade for maior que o limite, substitui pelo limite
+                if($("#quantidade").val() > limite){
+                    $("#quantidade").val(limite);
+                }
+
+                //Aplica o limite ao input
+                $("#quantidade").attr("max", limite);
+            }
+        }
+
+        $(document).ready(function () {
+            $("#btnSubmit").click(function () {
+                sorteioSequenciaDeNumeros();
+            });
+
+            $(".input-numero").keypress(function(e){
+                if(e.wich == 13 || e.keyCode == 13){
+                    limitaQuantidade();
+                    sorteioSequenciaDeNumeros();
+                }
+            });
+
+            $(".input-numero").change(function () {
+                limitaQuantidade();
+            });
+
+            $("#permitirRepeticao").change(function () {
+               limitaQuantidade();
+            });
+        });
+    </script>
 
 
 </body>
