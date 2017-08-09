@@ -246,7 +246,7 @@
             var permitirRepeticao = $("#permitirRepeticao").is(":checked");
             var texto = "";
 
-            //Se o início e o fim forem vazios, vai sortear entre 0 e 10
+            //Se o início e o fim forem vazios, vai sortear entre 0 e 9
             if(fim=="" && inicio==""){
                 fim = 9;
             }
@@ -322,7 +322,7 @@
             }
             else{
                 if(fim=="" && inicio==""){
-                    fim = 10;
+                    fim = 9;
                 }
                 else if(fim==""){
                     var tamanhoInicio = $("#inicio").val().length;
