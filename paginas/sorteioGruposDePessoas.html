@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../Imagens/Logo/bingo.png" />
+
+    <title>Sorteador Online</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="../css/freelancer.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+    <style type="text/css">
+       .roxo p { color: #ba4c63; font-weight: 900;text-shadow: 2px 2px black;}
+       .bs-calltoaction{
+            position: relative;
+            width:auto;
+            padding: 15px 25px;
+            border: 1px solid black;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+            .bs-calltoaction > .row{
+                display:table;
+                width: calc(100% + 30px);
+            }
+             
+                .bs-calltoaction > .row > [class^="col-"],
+                .bs-calltoaction > .row > [class*=" col-"]{
+                    float:none;
+                    display:table-cell;
+                    vertical-align:middle;
+                }
+
+                    .cta-contents{
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+
+                        .cta-title{
+                            margin: 0 auto 15px;
+                            padding: 0;
+                        }
+
+                        .cta-desc{
+                            padding: 0;
+                        }
+
+                        .cta-desc p:last-child{
+                            margin-bottom: 0;
+                        }
+
+                    .cta-button{
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+
+        @media (max-width: 991px){
+            .bs-calltoaction > .row{
+                display:block;
+                width: auto;
+            }
+
+                .bs-calltoaction > .row > [class^="col-"],
+                .bs-calltoaction > .row > [class*=" col-"]{
+                    float:none;
+                    display:block;
+                    vertical-align:middle;
+                    position: relative;
+                }
+
+                .cta-contents{
+                    text-align: center;
+                }
+        }
+
+
+
+        .bs-calltoaction.bs-calltoaction-default{
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+        .bs-calltoaction.bs-calltoaction-primary{
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+
+        .bs-calltoaction.bs-calltoaction-info{
+            color: #fff;
+            background-color: #5bc0de;
+            border-color: #46b8da;
+        }
+
+        .bs-calltoaction.bs-calltoaction-success{
+            color: #fff;
+            background-color: #5cb85c;
+            border-color: #4cae4c;
+        }
+
+        .bs-calltoaction.bs-calltoaction-warning{
+            color: #fff;
+            background-color: #f0ad4e;
+            border-color: #eea236;
+        }
+
+        .bs-calltoaction.bs-calltoaction-danger{
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+        }
+
+        .bs-calltoaction.bs-calltoaction-primary .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-info .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-success .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-warning .cta-button .btn,
+        .bs-calltoaction.bs-calltoaction-danger .cta-button .btn{
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" class="index">
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="../index.html">Sorteador Online</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="../index.html#portifolio">Home</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#portfolio">Sorteio</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="../index.html#about">Sobre</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#contact">Contatos</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+     <header>
+        <div class="container" id="maincontent" tabindex="-1">
+            <div class="row">
+                <div class="col-lg-12">
+                <a href="../index.html">
+                    <img class="img-responsive" src="../Imagens/Logo/bingo.png" alt="LOGO">
+                </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+     <section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Sortear grupos de pessoas a partir de um intervalo</h2>
+                    <hr class="star-primary">
+                </div>
+                <div class="col-lg-12 text-center">
+                <hr>
+                     <!-- Formularios -->
+                      <div class="col-lg-4">
+                        <h5>Pessoas</h5>
+                        <hr>
+                        <br>
+                        <div class="col-lg-9"><input type="text" class="form-control" name="Nome" placeholder="Digite o nome da pessoa"></div>
+                        <button class="bnt bnt-link" type="button"><i class="fa fa-times text-danger fa-lg"></i></button>
+                        <button class="bnt bnt-link" type="button"><i class="fa fa-plus text-success fa-lg"></i></button>
+                    </div>
+                      <div class="form-group col-lg-4">
+                        <label for="fim">Quantidades de grupos</label>
+                        <input type="number" class="form-control" id="fim" placeholder="Digite aqui a quantidade de grupos a ser gerado">
+                        <br>
+                        <label for="fim">Quantidades de Pessoas por grupos</label>
+                        <input type="number" class="form-control" id="fim" placeholder="Digite aqui a quantidade de membros por grupo">
+                        <span style="opacity:0.65;
+                                    -moz-opacity: 0.65;
+                                    filter: alpha(opacity=65); ">Lembrando que a quantidade do ultimo grupo será proporcional ao que sobrar. Ex: 2 grupos de 2 pessoas no intervalo, sendo que só existem 3 Pessoas, o ultimo grupo será formado pelo resto.
+                        </span>
+                      </div>
+                       <div class="form-group col-lg-4">
+                            <br>
+                         <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
+                      </div>
+                    <div class="form-group col-lg-4">
+                        <div class="checkbox">
+                            <label for="valorPadrao">
+                                <input type="checkbox" name="valorPadrao" id="valorPadrao" value="1" checked>
+                                Usar repetição de Pessoas.
+                            </label>
+                        </div>
+                    </div>
+                    <!-- Fim do formulario -->
+                    <hr>
+                </div>
+                <div class="col-lg-8 text-center pull-right">
+
+                <!-- RESPOSTA DOS SORTEIOS -->
+                    <!-- JS acrescentará copias dessa div a cada interação de grupo.. -->
+                    <div class="bs-calltoaction bs-calltoaction-success">
+                    <div class="row">
+                        <div class="col-lg-3 cta-contents">
+                            <h1 class="cta-title">GRUPO <span id="numero">1</span></h1>
+                            <div class="cta-desc">
+                                <p>Pessoa A,B,C,D(Ao fazer o código, pode apagar isso)</p>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+                <!-- JS acrescentará copias dessa div a cada interação de grupo.. (FINAL DA DIV) -->
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+     <!-- Footer -->
+    <footer class="text-center" id="contact" style="margin-top: 20%">
+        <div class="footer-above">
+            <div class="container">
+            <div class="row">
+            <h3>Desenvolvedores</h3>
+                    <div class="footer-col col-md-6">
+                        <ul class="list-inline">
+                        <li> <img src="../Imagens/criador/david.jpg" alt="david" class="img-circle" width="40%"></li>
+                            <li>
+                                <a href="https://www.facebook.com/samerson.d" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/david_samerson/" class="btn-social btn-outline"><span class="sr-only">Instagram</span><i class="fa fa-fw fa-instagram"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/u/0/+DavidSamerson" class="btn-social btn-outline"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/davidsamerson" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/david-samerson-86328630/" class="btn-social btn-outline"><span class="sr-only">Linked In</span><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/DavidSamerson" class="btn-social btn-outline"><span class="sr-only">GitHub</span><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                        </ul>
+                       
+                    
+                    <div >
+                        <h3>David Samerson</h3>
+                        <p>Análise e Desenvolvimento de Sistemas<br>
+                           Téc. em Redes de Computadores</p>
+                    </div>
+                </div>
+                <div class="footer-col col-md-6">
+                        <ul class="list-inline">
+                        <li> <img src="../Imagens/criador/itrio.jpg" alt="david" class="img-circle" width="40%"></li>
+                            <li>
+                                <a href="https://www.facebook.com/itrionetuno" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://plus.google.com/+ItrioNetuno" class="btn-social btn-outline"><span class="sr-only">Google Plus</span><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/DrNetuno" class="btn-social btn-outline"><span class="sr-only">Twitter</span><i class="fa fa-fw fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/in/itrio-netuno-5b704840/" class="btn-social btn-outline"><span class="sr-only">Linked In</span><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/itrio" class="btn-social btn-outline"><span class="sr-only">GitHub</span><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                        </ul>
+                       
+                    
+                    <div >
+                        <h3>Itrio Netuno</h3>
+                        <p>Acadêmico de Engenharia de Telecomunicações</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Todos os direitos reservados
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="../js/jqBootstrapValidation.js"></script>
+    <script src="../js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="../js/freelancer.min.js"></script>
+
+</body>
+
+</html>
