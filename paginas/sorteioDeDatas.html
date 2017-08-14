@@ -102,19 +102,20 @@
                 <div class="col-lg-12 text-center">
 
                 
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="contentDatas">
                 <hr>
                 <!-- INICIO DA CÒPIA -->
-                <div class="control-group bg-success" style="padding: 10px;">
-                    <label for="product_type" class="pull-left"><h5> DATA 1: </h5> </label>
-                    <div class="entry input-group">  
-                    <div class="col-lg-12"><input type="date" class="form-control " id="inicio1" placeholder="DD/MMMM/AAAA"></div> 
-                        <span class="input-group-btn">
-                            <button class="btn btn-link" type="button"><i class="fa fa-times text-danger fa-lg"></i></button>
-                            <button class="btn btn-link" type="button"><i class="fa fa-plus text-success fa-lg"></i></button>
+                <div class='control-group bg-success' style='padding: 10px;' id='data1'>
+                    <label for='data1' class='pull-left'><h5 class='tituloData'> DATA 1: </h5> </label>
+                    <div class='entry input-group'>
+                    <div class='col-lg-12'><input type='date' class='form-control' placeholder='DD/MMMM/AAAA'></div>
+                        <span class='input-group-btn'>
+                            <button class='btn btn-link' id='btn-excluir1' type='button'><i class='fa fa-times text-danger fa-lg'></i></button>
+                            <button class='btn btn-link' id='btn-novo1' type='button'><i class='fa fa-plus text-success fa-lg'></i></button>
                         </span>
                     </div>
                 </div>
+
                  <!--FIM DA COPIA-->
 
                 </div>
@@ -248,6 +249,51 @@
 
     <!-- Theme JavaScript -->
     <script src="../js/freelancer.min.js"></script>
+
+    <script type="text/javascript">
+        var indiceData = 1;
+        $(document).ready(function () {
+            aplicaPadrao(indiceData);
+        });
+        
+        function aplicaPadrao(indice) {
+            $("#btn-novo" + indice).click(function () {
+                indiceData++;
+
+                var data = "<div class='control-group bg-success' style='padding: 10px;' id='data"+indiceData+"'>" +
+                    "<label for='data1' class='pull-left'><h5 class='tituloData' id='teste'> DATA " + indiceData + ": </h5> </label>" +
+                    "<div class='entry input-group'>" +
+                    "<div class='col-lg-12'><input type='date' class='form-control' placeholder='DD/MMMM/AAAA'></div>" +
+                    "<span class='input-group-btn'>" +
+                    "<button class='btn btn-link' id='btn-excluir" + indiceData + "' type='button'><i class='fa fa-times text-danger fa-lg'></i></button>" +
+                    "<button class='btn btn-link' id='btn-novo" + indiceData + "' type='button'><i class='fa fa-plus text-success fa-lg'></i></button>" +
+                    "</span></div></div>";
+
+                //Coloca o novo formulário embaixo do botão que foi apertado
+                $("#data"+$(this).attr("id").replace("btn-novo", "")).after(data);
+                aplicaPadrao(indiceData);
+                corrigeIndices();
+            });
+
+            $("#btn-excluir" + indice).click(function () {
+                if($(".tituloData").length > 1) {
+                    $("#data" + $(this).attr("id").replace("btn-excluir", "")).remove();
+                    corrigeIndices();
+                }
+                else{
+                    alert("Você precisa de pelo menos um elemento para sortear!");
+                }
+            });
+        }
+        
+        function corrigeIndices() {
+            var i = 1;
+            $.each($(".tituloData"), function () {
+                $(this).html("DATA "+ i++ +":");
+            });
+        }
+        
+    </script>
 
 </body>
 
