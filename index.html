@@ -26,6 +26,28 @@
 
     <style type="text/css">
        .roxo p { color: #ba4c63; font-weight: 900;text-shadow: 2px 2px black;}
+       .fadeIn {
+            -webkit-animation: fadeIn 2s ease-in-out;
+            -moz-animation: fadeIn 2s ease-in-out;
+            -o-animation: fadeIn 2s ease-in-out;
+            animation: fadeIn 2s ease-in-out;
+            }
+        @-webkit-keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; } 
+            }
+            @-moz-keyframes fadeIn {
+            0% { opacity: 0;}
+            100% { opacity: 1; }
+            }
+            @-o-keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+            }
+            @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+            }
     </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -44,7 +66,7 @@
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
+            <div class="navbar-header page-scroll wow fade-in">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
@@ -77,12 +99,12 @@
     <header>
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 fadeIn">
                     <img class="img-responsive" src="Imagens/Logo/bingo.png" alt="LOGO" width="20%">
                     <div class="intro-text">
                         <h1 class="name">Sorteador Online</h1>
                         <hr class="ball-light">
-                        <span class="skills">Agora você pode dividir o peixe igualmente para quantas pessoas quiser assim como fez Jesus Cristo!</span>
+                        <span class="skills ">Agora você pode dividir o peixe igualmente para quantas pessoas quiser assim como fez Jesus Cristo!</span>
                     </div>
                 </div>
             </div>
@@ -93,14 +115,14 @@
     <section id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center fadeIn">
                     <h2>Tipos de sorteios</h2>
                     <hr class="star-primary">
                 </div>
             </div>
             <div class="row">
 
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioIntervaloDeNumeros.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -112,7 +134,7 @@
                         <img src="img/portfolio/intervaloDeNumeros.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioSequenciaDeNumeros.html#portfolio" class="portfolio-link">
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -124,7 +146,7 @@
                         <img src="img/portfolio/sequenciaDeNumeros.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioGrupoDeNumeros.html#portfolio" class="portfolio-link">
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -136,7 +158,7 @@
                         <img src="img/portfolio/grupoDeNumeros.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioDeUmNumeroAleatorio.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -148,7 +170,7 @@
                         <img src="img/portfolio/sorteioDeNumero.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioDeDatas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -160,7 +182,7 @@
                         <img src="img/portfolio/sorteioDeData.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioDeUmaLetraAleatoria.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -172,7 +194,7 @@
                         <img src="img/portfolio/sorteioDeLetra.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioIntervaloDeLetras.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -184,7 +206,7 @@
                         <img src="img/portfolio/intervaloDeLetra.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioSequenciaDeLetras.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -196,7 +218,7 @@
                         <img src="img/portfolio/sequenciaDeLetras.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioGrupoDeLetras.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -208,7 +230,7 @@
                         <img src="img/portfolio/grupoDeLetras.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioTarefaParaPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -220,7 +242,7 @@
                         <img src="img/portfolio/TarefaPraPessoas.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioObjetoParaPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -232,7 +254,7 @@
                         <img src="img/portfolio/objetoPraPessoas.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioDataParaPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -244,7 +266,7 @@
                         <img src="img/portfolio/dataParaPessoas.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                 <div class="col-sm-4 portfolio-item">
+                 <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioIntervaloParaPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -256,7 +278,7 @@
                         <img src="img/portfolio/sequenciaDeNumeroParaPessoas.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioGruposDEPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -268,7 +290,7 @@
                         <img src="img/portfolio/criarGrupoDePessoas.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioClassificacaoParaPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -280,7 +302,7 @@
                         <img src="img/portfolio/OrdemEClassificacaoParaPessoas.png" class="img-responsive" alt="Cabin">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="#portfolioModal1" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -292,7 +314,7 @@
 
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item fadeIn">
                     <a href="paginas/sorteioNumerosParaPessoas.html#portfolio" class="portfolio-link" >
                         <div class="caption">
                             <div class="caption-content roxo">
@@ -314,16 +336,16 @@
     <section class="success" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
+                <div class="col-lg-12 text-center fadeIn">
                     <h2>Sobre</h2>
                     <hr class="star-light">
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
+                <div class="col-lg-4 col-lg-offset-2 fadeIn">
                     <p>Este projeto de sorteamento online visa acima de tudo resolver problemas de sorteios de forma igual e justa a todos os participantes e membros relacionados.</p>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-4 fadeIn">
                     <p>Projeto sem fins lucrativos, ou qualquer meios financeiros. Totalmente confiavel em seus resultados.</p>
                 </div>
             </div>
@@ -339,7 +361,7 @@
             <h3>Desenvolvedores</h3>
                     <div class="footer-col col-md-6">
                         <ul class="list-inline">
-                        <li> <img src="Imagens/criador/david.jpg" alt="david" class="img-circle" width="40%"></li>
+                        <li class="fadeIn"> <img src="Imagens/criador/david.jpg" alt="david" class="img-circle" width="40%"></li>
                             <li>
                                 <a href="https://www.facebook.com/samerson.d" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
@@ -369,7 +391,7 @@
                 </div>
                 <div class="footer-col col-md-6">
                         <ul class="list-inline">
-                        <li> <img src="Imagens/criador/itrio.jpg" alt="david" class="img-circle" width="40%"></li>
+                        <li class="fadeIn"> <img src="Imagens/criador/itrio.jpg" alt="david" class="img-circle" width="40%"></li>
                             <li>
                                 <a href="https://www.facebook.com/itrionetuno" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
