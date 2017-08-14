@@ -331,7 +331,8 @@
 
             //Percorre pra ver se tem alguma data vazia
             var quantidadeReal = $(".tituloData").length;
-            for(var i=0; i<quantidade; i++){
+            var num = $(".tituloData").length;
+            for(var i=0; i<num; i++){
                 if($(".input-data").eq(i).val()==""){
                     quantidadeReal--;
                 }
@@ -374,8 +375,8 @@
                         texto += "<span><h5>"+ i++ +" - "+dataSorteada+"</h5></span>";
                     }
 
-                    if(quantidade!=quantidadeReal && $("#quantidade").val()!=""){
-                        texto +="<br><br>Existem campos não preenchidos";
+                    if($(".tituloData").length!=quantidadeReal && $("#quantidade").val()!=""){
+                        texto +="<br><br>OBS: Existem campos não preenchidos";
                     }
 
                 }
