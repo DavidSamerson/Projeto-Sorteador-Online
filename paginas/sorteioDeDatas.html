@@ -108,7 +108,7 @@
                 <div class='control-group bg-success' style='padding: 10px;' id='data1'>
                     <label for='data1' class='pull-left'><h5 class='tituloData'> DATA 1: </h5> </label>
                     <div class='entry input-group'>
-                    <div class='col-lg-12'><input type='date' class='form-control' placeholder='DD/MMMM/AAAA'></div>
+                    <div class='col-lg-12'><input type='date' class='form-control input-data' placeholder='DD/MMMM/AAAA'></div>
                         <span class='input-group-btn'>
                             <button class='btn btn-link' id='btn-excluir1' type='button'><i class='fa fa-times text-danger fa-lg'></i></button>
                             <button class='btn btn-link' id='btn-novo1' type='button'><i class='fa fa-plus text-success fa-lg'></i></button>
@@ -122,13 +122,13 @@
 
                 <div class="col-lg-2">
                     <div class="control-group ">
-                        <label for="product_type"><h6><small>Quantidade de Resultados</small></h6></label>
-                        <input type="number" class="form-control " id="inicio1" placeholder="Quantidade de resultados"> 
+                        <label for="quantidade"><h6><small>Quantidade de Resultados</small></h6></label>
+                        <input type="number" min="1" class="form-control " id="quantidade" placeholder="Quantidade de resultados">
                      </div>
 
                     <div class="control-group checkbox">
                         <label>
-                          <input type="checkbox"> Utilizar Repetição
+                          <input type="checkbox" id="permitirRepeticao" checked> Permitir Repetição
                         </label>
                      </div>
                      
@@ -138,13 +138,15 @@
                      <button id="btnSubmit" type="submit" class="btn btn-default btn-primary btn-lg btn-block">SORTEAR</button>
                 </div>
                 <br>
-                <div class=" bg-success col-lg-6 pull-right" style="margin-top: 5%;">
+                <div class=" bg-success col-lg-6 pull-right" style="margin-top: 5%; display: none;" id="divResultado">
                 <br>
                     <h3>Resultado:</h3>
                     <br>
-                    <span> <h5> 1 -  DATA ESCOLHIDA </h5> </span>
-                    <span> <h5> 2 -  DATA ESCOLHIDA </h5> </span>
-                    <span> <h5> ... </h5> </span>
+                    <div id="textoResultado">
+                        <span> <h5> 1 -  DATA ESCOLHIDA </h5> </span>
+                        <span> <h5> 2 -  DATA ESCOLHIDA </h5> </span>
+                        <span> <h5> ... </h5> </span>
+                    </div>
                 </div>
                 </div>
             </div>
@@ -254,6 +256,19 @@
         var indiceData = 1;
         $(document).ready(function () {
             aplicaPadrao(indiceData);
+
+            $("#btnSubmit").click(function () {
+                sorteio();
+            });
+
+            $("#quantidade").change(function () {
+                limitaQuantidade();
+            });
+
+            $("#permitirRepeticao").change(function () {
+                limitaQuantidade();
+            });
+
         });
         
         function aplicaPadrao(indice) {
@@ -263,7 +278,7 @@
                 var data = "<div class='control-group bg-success' style='padding: 10px;' id='data"+indiceData+"'>" +
                     "<label for='data1' class='pull-left'><h5 class='tituloData' id='teste'> DATA " + indiceData + ": </h5> </label>" +
                     "<div class='entry input-group'>" +
-                    "<div class='col-lg-12'><input type='date' class='form-control' placeholder='DD/MMMM/AAAA'></div>" +
+                    "<div class='col-lg-12'><input type='date' class='form-control input-data' placeholder='DD/MMMM/AAAA'></div>" +
                     "<span class='input-group-btn'>" +
                     "<button class='btn btn-link' id='btn-excluir" + indiceData + "' type='button'><i class='fa fa-times text-danger fa-lg'></i></button>" +
                     "<button class='btn btn-link' id='btn-novo" + indiceData + "' type='button'><i class='fa fa-plus text-success fa-lg'></i></button>" +
@@ -273,12 +288,14 @@
                 $("#data"+$(this).attr("id").replace("btn-novo", "")).after(data);
                 aplicaPadrao(indiceData);
                 corrigeIndices();
+                limitaQuantidade();
             });
 
             $("#btn-excluir" + indice).click(function () {
                 if($(".tituloData").length > 1) {
                     $("#data" + $(this).attr("id").replace("btn-excluir", "")).remove();
                     corrigeIndices();
+                    limitaQuantidade();
                 }
                 else{
                     alert("Você precisa de pelo menos um elemento para sortear!");
@@ -291,6 +308,99 @@
             $.each($(".tituloData"), function () {
                 $(this).html("DATA "+ i++ +":");
             });
+        }
+
+        function sortear(inicio, fim) {
+            return Math.floor(Math.random() * (fim + 1 - inicio)) + inicio;
+        }
+
+        function sorteio() {
+            limitaQuantidade();
+
+            var inicio = 1;
+            var fim = $(".tituloData").length;
+
+            var quantidade = +$("#quantidade").val();
+            var permitirRepeticao = $("#permitirRepeticao").is(":checked");
+            var texto = "";
+
+            //Se QUANTIDADE não for informada, o número de elementos sorteados será do tamanho do espaço amostral especificado
+            if(!quantidade || quantidade < 1){
+                quantidade = $(".tituloData").length;
+            }
+
+            //Percorre pra ver se tem alguma data vazia
+            var quantidadeReal = $(".tituloData").length;
+            for(var i=0; i<quantidade; i++){
+                if($(".input-data").eq(i).val()==""){
+                    quantidadeReal--;
+                }
+            }
+
+            //Se a quantidade não tiver sido informada e houverem campos vazios, a quantidade de resultados passa a ser a quantidade de campos preenchidos
+            if($("#quantidade").val()=="" && quantidade!=quantidadeReal){
+                quantidade = quantidadeReal;
+            }
+
+            if(quantidadeReal==0){
+                alert("Não foi possível sortear!");
+            }
+            else{
+                if(permitirRepeticao){
+                    for(var i=1; i<=quantidade; ){
+                        do{
+                            var dataSorteada = $(".input-data").eq(sortear(inicio, fim) - 1).val();
+                        }while(dataSorteada=="");
+
+                        texto += "<span><h5>"+ i++ +" - "+dataSorteada+"</h5></span>";
+
+                    }
+                }
+                else{
+                    //Se a repetição não estiver disponível e houverem campos vazios, a quantidade de resultados passa a ser a quantidade de campos preenchidos
+                    if(quantidade!=quantidadeReal){
+                        quantidade = quantidadeReal;
+                    }
+
+                    var dataSorteada;
+                    var datas = new Array();
+
+                    for(var i=1; i<=quantidade; ) {
+                        do {
+                            dataSorteada = $(".input-data").eq(sortear(inicio, fim) - 1).val();
+                        } while ((datas.indexOf(dataSorteada) != -1)||dataSorteada=="");
+
+                        datas[i] = dataSorteada;
+                        texto += "<span><h5>"+ i++ +" - "+dataSorteada+"</h5></span>";
+                    }
+
+                    if(quantidade!=quantidadeReal && $("#quantidade").val()!=""){
+                        texto +="<br><br>Existem campos não preenchidos";
+                    }
+
+                }
+
+                $("#textoResultado").html(texto);
+                $("#divResultado").show();
+            }
+        }
+
+        function limitaQuantidade(){
+            var limite = $(".tituloData").length;
+
+            if($("#permitirRepeticao").is(":checked")){
+                $("#quantidade").attr("max", "");
+            }
+            else{
+
+                //Se a quantidade for maior que o limite, substitui pelo limite
+                if($("#quantidade").val() > limite){
+                    $("#quantidade").val(limite);
+                }
+
+                //Aplica o limite ao input
+                $("#quantidade").attr("max", limite);
+            }
         }
         
     </script>
