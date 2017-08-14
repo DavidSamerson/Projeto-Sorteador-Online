@@ -339,7 +339,7 @@
             }
 
             //Se a quantidade não tiver sido informada e houverem campos vazios, a quantidade de resultados passa a ser a quantidade de campos preenchidos
-            if($("#quantidade").val()=="" && quantidade!=quantidadeReal){
+            if($("#quantidade").val()=="" && quantidade>quantidadeReal){
                 quantidade = quantidadeReal;
             }
 
@@ -353,13 +353,13 @@
                             var dataSorteada = $(".input-data").eq(sortear(inicio, fim) - 1).val();
                         }while(dataSorteada=="");
 
-                        texto += "<span><h5>"+ i++ +" - "+dataSorteada+"</h5></span>";
+                        texto += "<span><h5>"+ i++ +" - "+formataData(dataSorteada)+"</h5></span>";
 
                     }
                 }
                 else{
                     //Se a repetição não estiver disponível e houverem campos vazios, a quantidade de resultados passa a ser a quantidade de campos preenchidos
-                    if(quantidade!=quantidadeReal){
+                    if(quantidade>quantidadeReal){
                         quantidade = quantidadeReal;
                     }
 
@@ -372,10 +372,10 @@
                         } while ((datas.indexOf(dataSorteada) != -1)||dataSorteada=="");
 
                         datas[i] = dataSorteada;
-                        texto += "<span><h5>"+ i++ +" - "+dataSorteada+"</h5></span>";
+                        texto += "<span><h5>"+ i++ +" - "+formataData(dataSorteada)+"</h5></span>";
                     }
 
-                    if($(".tituloData").length!=quantidadeReal && $("#quantidade").val()!=""){
+                    if($(".tituloData").length>quantidadeReal && $("#quantidade").val()>quantidadeReal){
                         texto +="<br><br>OBS: Existem campos não preenchidos";
                     }
 
@@ -384,6 +384,12 @@
                 $("#textoResultado").html(texto);
                 $("#divResultado").show();
             }
+        }
+
+        function formataData(data){
+            data = data.split("-");
+
+            return data[2]+"/"+data[1]+"/"+data[0];
         }
 
         function limitaQuantidade(){
