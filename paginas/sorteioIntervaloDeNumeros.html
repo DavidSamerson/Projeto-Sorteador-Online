@@ -111,8 +111,8 @@
                     <div class="col-lg-6"><input type="number" class="form-control " id="inicio1" placeholder="Inicio"></div>  
                     <div class="col-lg-6"><input type="number" class="form-control" id="fim1" placeholder="Fim"></div>
                         <span class="input-group-btn">
-                            <button class="btn btn-link" id="btn-excluir" type="button"><i class="fa fa-times text-danger fa-lg"></i></button>
-                            <button class="btn btn-link" id="btn-novo" type="button"><i class="fa fa-plus text-success fa-lg"></i></button>
+                            <button class="btn btn-link" id="btn-excluir1" type="button"><i class="fa fa-times text-danger fa-lg"></i></button>
+                            <button class="btn btn-link" id="btn-novo1" type="button"><i class="fa fa-plus text-success fa-lg"></i></button>
                         </span>
                     </div>
                 </div>
@@ -251,7 +251,11 @@
     <script src="../js/freelancer.min.js"></script>
 
     <script> 
+
         //Principal
+
+        var indiceData = 1;
+
         $(document).ready(function () {
             aplicaPadrao(indiceData);
 
@@ -267,6 +271,44 @@
                 limitaQuantidade();
             });
         });
+
+
+        function aplicaPadrao(indice) {
+            $("#btn-novo" + indice).click(function () {
+
+                indiceData++;
+
+                var data = "<div class='control-group bg-success' style='padding: 10px;' id='data"+indiceData+"'>"+
+                   "<label for='product_type' class='pull-left'><h5> Intervalo "+indiceData+": </h5> </label>"+
+                    "<div class='entry input-group'>"+
+                    "<div class='col-lg-6'><input type='number' class='form-control' id='inicio"+indiceData+"' placeholder='Inicio'></div>"+
+                    "<div class='col-lg-6'><input type='number' class='form-control' id='fim"+indiceData+"' placeholder='Fim'></div>"+
+                        "<span class='input-group-btn'>"+
+                            "<button class='btn btn-link' id='btn-excluir"+indiceData+"' type='button'><i class='fa fa-times text-danger fa-lg'></i></button>"+
+                            "<button class='btn btn-link' id='btn-novo"+indiceData+"' type='button'><i class='fa fa-plus text-success fa-lg'></i></button>"+
+                        "</span>"+
+                    "</div>"+
+                "</div>";
+
+                //Coloca o novo formulário embaixo do botão que foi apertado
+                $("#data"+ $(this).attr("id").replace("btn-novo", "")).after(data);
+                aplicaPadrao(indiceData);
+                corrigeIndices();
+                limitaQuantidade();
+            });
+
+            $("#btn-excluir" + indice).click(function () {
+                if($(".tituloData").length > 1) {
+                    $("#data" + $(this).attr("id").replace("btn-excluir", "")).remove();
+                    corrigeIndices();
+                    limitaQuantidade();
+                }
+                else{
+                    alert("Você precisa de pelo menos um elemento para sortear!");
+                }
+            });
+        }
+        
         
     </script>
 
